@@ -4,129 +4,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JUDUL</title>
 
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #000;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
+body {
+  margin: 0;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-  .container {
-    width: 100%;
-    max-width: 420px;
-    padding: 10px;
-    text-align: center;
-  }
+/* Frame cinematic */
+.video-frame {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .title {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
+/* Gambar auto semua rasio */
+.video-frame img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
 
-  .video-card {
-    position: relative;
-    width: 100%;
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: pointer; /* FIX: cursor jadi tangan */
-  }
+/* Overlay bawah */
+.video-frame::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
 
-  .video-card img {
-    width: 100%;
-    display: block;
-    border-radius: 12px;
-  }
+/* 🔥 Play button FIX */
+.play-button {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
 
-  .play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70px;
-    height: 70px;
-    background: rgba(255,255,255,0.9);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer; /* FIX tambahan */
-  }
+/* Icon kecil */
+.play-button::before {
+  content: "▶";
+  color: white;
+  font-size: 26px;
+  margin-left: 3px;
+}
 
-  .play-button:after {
-    content: '';
-    border-style: solid;
-    border-width: 12px 0 12px 20px;
-    border-color: transparent transparent transparent #000;
-    margin-left: 5px;
-  }
+/* Hover */
+.video-frame:hover .play-button {
+  background: rgba(0,0,0,0.6);
+  transform: scale(1.05);
+}
 
-  .btn-wrapper {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-  }
+/* Klik */
+.video-frame:active .play-button {
+  transform: scale(0.95);
+}
 
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #ff0000;
-    color: #fff;
-    padding: 10px 18px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer; /* biar tombol juga konsisten */
-  }
+/* Progress */
+.controls {
+  position: absolute;
+  bottom: 15px;
+  width: 90%;
+}
 
-  .btn-icon {
-    width: 0;
-    height: 0;
-    border-left: 10px solid #fff;
-    border-top: 6px solid transparent;
-    border-bottom: 6px solid transparent;
-  }
+.progress {
+  width: 100%;
+  height: 3px;
+  background: rgba(255,255,255,0.3);
+  position: relative;
+}
 
-  @media (max-width: 480px) {
-    .play-button {
-      width: 60px;
-      height: 60px;
-    }
-  }
+.progress::after {
+  content: "";
+  width: 25%;
+  height: 100%;
+  background: white;
+  position: absolute;
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <div class="title"><h3>When Auntie forgets the camera is still on</h3></div>
-<br>
-  <div class="video-card" onclick="goToLink()">
-    <img src="https://cdn.aceimg.com/57759f8b0.jpg" alt="preview">
+<a href="https://starveunbutton.com/t8jw952g8j?key=e8f520fc373aa31b61e9533bda9b5b3a">
+  <div class="video-frame">
+
+    <img src="https://cdn.aceimg.com/81cbe197e.jpg">
+
     <div class="play-button"></div>
-  </div>
 
-  <div class="btn-wrapper">
-    <a href="https://starveunbutton.com/t8jw952g8j?key=e8f520fc373aa31b61e9533bda9b5b3a" class="btn">
-      <span class="btn-icon"></span>
-      Full HD Video
-    </a>
-  </div>
-</div>
+    <div class="controls">
+      <div class="progress"></div>
+    </div>
 
-<script>
-  function goToLink() {
-    window.location.href = "https://bio.critiquie.com/HqYNb";
-  }
-</script>
+  </div>
+</a>
 
 </body>
 </html>
